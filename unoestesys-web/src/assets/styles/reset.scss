@@ -1,0 +1,159 @@
+@import "variables.scss";
+
+html,
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 87.5%;
+}
+
+body {
+    background: transparent url(../media/images/bg.png) no-repeat fixed center;
+    background-size: contain;
+    min-height: 100vh;
+    margin: 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    transition: background-color 0.3s;
+
+    &.dark {
+        color: $white;
+        background-color: $bg-dark-01;
+
+        a,
+        button {
+            color: $white;
+        }
+
+        main {
+            section {
+                .lx-card {
+                    background-color: $bg-dark-02;
+                }
+            }
+        }
+    }
+
+    main {
+        padding: 2rem 0;
+        display: grid;
+        grid-auto-flow: row;
+        grid-template-rows: min-content;
+        gap: 1rem;
+
+        section {
+            .title {
+                color: $brand;
+                font-size: 1.6rem;
+                text-align: left;
+                margin: 0 0 1rem 0;
+            }
+
+            .subtitle {
+                color: $brand;
+                font-size: 1.3rem;
+                text-align: left;
+                margin: 1rem 0;
+            }
+
+            .text {
+                font-size: 1rem;
+                text-align: left;
+            }
+
+            .lx-card {
+                background-color: $bg;
+            }
+
+            #return {
+                color: $white;
+                font-weight: 700;
+                background-color: $brand;
+                padding: 0.5rem 1rem;
+                margin: 0 0 1rem 0;
+                box-shadow: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+
+    form {
+        width: 100%;
+
+        .actions {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .lx-btn {
+                color: $white;
+                font-weight: 700;
+                padding: 0.5rem 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &#cancel,
+                &.cancel {
+                    background-color: $danger;
+                }
+
+                &#clear,
+                &.clear {
+                    color: $black;
+                    background-color: $white;
+                }
+
+                &#save,
+                &.save {
+                    background-color: $success;
+                }
+            }
+        }
+
+        &.hide {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    html,
+    body {
+        font-size: 82.5%;
+    }
+}
+
+@media screen and (max-width: 1366px) {
+    .lx-container-70 {
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    body {
+        background-size: cover;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    html,
+    body {
+        font-size: 72.5%;
+    }
+}
+
+@keyframes swing-in-top-fwd {
+    0% {
+        transform: rotateX(-100deg);
+        transform-origin: top;
+        opacity: 0;
+    }
+    100% {
+        transform: rotateX(0deg);
+        transform-origin: top;
+        opacity: 1;
+    }
+}
