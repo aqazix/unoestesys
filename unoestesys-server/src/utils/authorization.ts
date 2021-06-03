@@ -2,8 +2,6 @@ import atob from "atob"
 import jwt from "jsonwebtoken"
 import { Request, Response, NextFunction } from "express"
 
-let env = require("dotenv-safe").config()
-
 export const parseJWT = (token: string) => {
     let base64 = token.split(".")[1].replace(/-/g, "+").replace(/_/g, "/")
     let jsonPayload = decodeURIComponent(atob(base64).split("").map(c => {

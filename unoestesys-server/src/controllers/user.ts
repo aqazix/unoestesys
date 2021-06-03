@@ -8,8 +8,6 @@ import database from "../database/connection"
 import { parseJWT } from "../utils/authorization"
 import { hash } from "../utils/bcrypt"
 
-let env = require("dotenv-safe").config()
-
 export default class User {
     create = async (request: Request, response: Response) => {
         const {

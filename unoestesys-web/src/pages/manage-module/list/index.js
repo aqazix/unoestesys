@@ -63,6 +63,7 @@ class List extends React.Component {
                         </thead>
                         <tbody>
                             {this.state.modules.length > 0 ? this.state.modules.map(module => {
+                                console.log(module)
                                 return (
                                     <tr key={module.number}>
                                         <td>{module.number}</td>

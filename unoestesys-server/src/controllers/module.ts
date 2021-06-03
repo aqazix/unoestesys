@@ -80,7 +80,7 @@ export default class Module {
             try {
                 await transaction("module").where({ id }).update({ current: false })
 
-                await transaction("appointment").where({ module: number }).update({ active: false })
+                await transaction("appointment").where({ module_id: id }).del()
 
                 await transaction("module").insert({
                     number,

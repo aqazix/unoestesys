@@ -3,8 +3,6 @@ import database from "../database/connection"
 import { Request, Response } from "express"
 import { compare } from "../utils/bcrypt"
 
-let env = require("dotenv-safe").config()
-
 export default class Login {
     signIn = async (request: Request, response: Response) => {
         const {

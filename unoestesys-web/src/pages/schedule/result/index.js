@@ -184,28 +184,28 @@ class Results extends React.Component {
                                                                             <Button to={{
                                                                                 pathname: "/calendar",
                                                                                 state: {
-                                                                                    module: this.state.modules[0].id,
+                                                                                    module: this.state.modules[0].number,
                                                                                     subject: subject.id
                                                                                 }
                                                                             }}>M1</Button>
                                                                             <Button to={{
                                                                                 pathname: "/calendar",
                                                                                 state: {
-                                                                                    module: this.state.modules[1].id,
+                                                                                    module: this.state.modules[1].number,
                                                                                     subject: subject.id
                                                                                 }
                                                                             }}>M2</Button>
                                                                             <Button to={{
                                                                                 pathname: "/calendar",
                                                                                 state: {
-                                                                                    module: this.state.modules[2].id,
+                                                                                    module: this.state.modules[2].number,
                                                                                     subject: subject.id
                                                                                 }
                                                                             }}>M3</Button>
                                                                             <Button to={{
                                                                                 pathname: "/calendar",
                                                                                 state: {
-                                                                                    module: this.state.modules[3].id,
+                                                                                    module: this.state.modules[3].number,
                                                                                     subject: subject.id
                                                                                 }
                                                                             }}>M4</Button>
@@ -214,14 +214,14 @@ class Results extends React.Component {
                                                                             <Button to={{
                                                                                 pathname: "/calendar",
                                                                                 state: {
-                                                                                    module: this.state.modules[4].id,
+                                                                                    module: this.state.modules[4].number,
                                                                                     subject: subject.id
                                                                                 }
                                                                             }}>M1</Button>
                                                                             <Button to={{
                                                                                 pathname: "/calendar",
                                                                                 state: {
-                                                                                    module: this.state.modules[5].id,
+                                                                                    module: this.state.modules[5].number,
                                                                                     subject: subject.id
                                                                                 }
                                                                             }}>M2</Button>

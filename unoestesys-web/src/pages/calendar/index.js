@@ -80,11 +80,12 @@ class Calendar extends React.Component {
             const { id, role_id } = parseJWT(getToken())
 
             if (state) {
-                const response = await api.get("/module/" + state.module)
+                const response = await (await api.get("/module/" + state.module)).data
                 let appointments = await (await api.get("/appointment?module_id=" + state.module + "&subject_id=" + state.subject)).data
                 let conflicts = await (await api.get("/conflict?module_id=" + state.module)).data
-                let [yearBegin, monthBegin, dayBegin] = response.data.dateBegin.split("-")
-                let [, monthEnd, dayEnd] = response.data.dateEnd.split("-")
+                console.log(state.module);
+                let [yearBegin, monthBegin, dayBegin] = response.dateBegin.split("-")
+                let [, monthEnd, dayEnd] = response.dateEnd.split("-")
 
                 appointments = appointments.map(day => day.day.split("T")[0])
                 conflicts = conflicts.map(conflict => conflict.day.split("T")[0].split("-")[2])
@@ -161,13 +162,13 @@ class Calendar extends React.Component {
                             <div className="lx-column">
                                 <CalendarWrapper className="lx-card">
                                     <CalendarHeader calendar className="is-text-centered">
-                                        <button className="lx-btn" onClick={this.handlePrev}><FaArrowLeft /></button>
+                                        {this.state.month > this.state.monthBegin && <button className="lx-btn" onClick={this.handlePrev}><FaArrowLeft /></button>}
 
                                         <span className="year">{this.state.year}</span>
 
                                         <span className="month">{_months[this.state.month - 1]}</span>
 
-                                        <button className="lx-btn" onClick={this.handleNext}><FaArrowRight /></button>
+                                        {this.state.month < this.state.monthEnd && <button className="lx-btn" onClick={this.handleNext}><FaArrowRight /></button>}
                                     </CalendarHeader>
 
                                     <CalendarBody calendar>

@@ -1,3 +1,4 @@
+require("dotenv/config")
 import cors from "cors"
 import express from "express"
 import http from "http"
@@ -18,7 +19,7 @@ export const initialize = () => {
         server = http.createServer(app)
 
         server.listen(process.env.PORT || 3333).on("listening", () => {
-            resolve()
+            resolve(null)
         }).on("error", error => {
             reject(error)
         })
@@ -32,7 +33,7 @@ export const close = () => {
                 reject(error)
                 return
             }
-            resolve()
+            resolve(null)
         })
     })
 }
