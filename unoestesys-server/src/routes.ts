@@ -1,8 +1,10 @@
 import express from "express"
+import multer from "multer"
 import verify from "./utils/authorization"
 import Appointment from "./controllers/appointment"
 import Conflict from "./controllers/conflict"
 import Course from "./controllers/course"
+import File from "./controllers/file"
 import Form from "./controllers/form"
 import Login from "./controllers/login"
 import Module from "./controllers/module"
@@ -13,9 +15,11 @@ import User from "./controllers/user"
 import Time from "./controllers/time"
 
 const routes = express.Router()
+const upload = multer({ dest: "./files"})
 const appointmentController = new Appointment()
 const conflictController = new Conflict()
 const courseController = new Course()
+const fileController = new File()
 const formController = new Form()
 const loginController = new Login()
 const moduleController = new Module()
@@ -37,6 +41,7 @@ routes.get("/appointment/:id", verify, appointmentController.show)
 routes.get("/course", verify, courseController.index)
 routes.get("/course/:id", verify, courseController.show)
 routes.get("/conflict", verify, conflictController.index)
+routes.get("/file", fileController.export)
 routes.get("/form", verify, formController.index)
 routes.get("/form/:id", verify, formController.show)
 routes.get("/module", verify, moduleController.index)

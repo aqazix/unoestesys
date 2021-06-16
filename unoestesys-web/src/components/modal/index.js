@@ -9,7 +9,7 @@ class Modal extends React.Component {
         appointments: [],
         conflicts: [],
         date: new Date(this.props.date),
-        dateString: new Date(this.props.date).toLocaleDateString("en-GB", { timeZone: "UTC" }).split("/").reverse().join("-"),
+        dateString: new Date(this.props.date).toLocaleDateString("pt-BR").split("/").reverse().join("-"),
         professors: [],
         time: 0,
         timesSaturday: [],
@@ -180,7 +180,7 @@ class Modal extends React.Component {
         try {
             this.props.loading(true)
 
-            let day = this.state.date
+            let day = this.props.date
             let module_id = this.props.module
             let subject_id = this.props.subject
             let time_id = this.state.time
@@ -278,7 +278,7 @@ class Modal extends React.Component {
             <ModalContainer>
                 <ModalCard className="lx-card">
                     <ModalHeader>
-                        <Title>Agendar Webconferência no dia - {this.state.date.toLocaleDateString("en-GB", { timeZone: "UTC" })}</Title>
+                        <Title>Agendar Webconferência no dia - {this.state.date.toLocaleDateString("pt-BR")}</Title>
 
                         <button className="lx-btn" onClick={() => this.props.close()}><FaTimesCircle /></button>
                     </ModalHeader>

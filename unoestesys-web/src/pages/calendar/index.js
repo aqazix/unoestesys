@@ -60,7 +60,7 @@ class Calendar extends React.Component {
     }
 
     setModal = day => {
-        const date = this.state.year + "-" + this.state.month.toLocaleString(undefined, { minimumIntegerDigits: 2 }) + "-" + day.toLocaleString(undefined, { minimumIntegerDigits: 2 })
+        const date = (this.state.year + "-" + this.state.month.toLocaleString(undefined, { minimumIntegerDigits: 2 }) + "-" + day.toLocaleString(undefined, { minimumIntegerDigits: 2 })) + "T23:59:59"
         this.setState({ date, modal: true })
     }
 
@@ -83,7 +83,6 @@ class Calendar extends React.Component {
                 const response = await (await api.get("/module/" + state.module)).data
                 let appointments = await (await api.get("/appointment?module_id=" + state.module + "&subject_id=" + state.subject)).data
                 let conflicts = await (await api.get("/conflict?module_id=" + state.module)).data
-                console.log(state.module);
                 let [yearBegin, monthBegin, dayBegin] = response.dateBegin.split("-")
                 let [, monthEnd, dayEnd] = response.dateEnd.split("-")
 
@@ -195,7 +194,8 @@ class Calendar extends React.Component {
                                                         const current = day ? this.state.year.toString().padStart(4, "0") + "-" + this.state.month.toString().padStart(2, "0") + "-" + day.day.toString().padStart(2, "0") : ""
                                                         const currentDay = day ? day.day.toString().padStart(2, "0") : ""
                                                         const comparison = day ? day.day >= dayBegin && day.day <= dayEnd : false
-                                                        const compareDay = new Date(current) > new Date(Date.now())
+                                                        const compareDay = new Date(current + "T23:59:59") > new Date(Date.now())
+                                                        console.log(this.state.appointments)
 
                                                         return (
                                                             day ?

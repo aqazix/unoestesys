@@ -349,7 +349,6 @@ class Home extends React.Component {
                                 <div className="notices">
                                     {this.state.notifications && this.state.notifications.length > 0 ?
                                         this.state.notifications.map((notification, index) => {
-                                            console.log(notification);
                                             return (
                                                 notification.type === 1 ?
                                                     <div key={notification.day + index} className="notice success bs-md">

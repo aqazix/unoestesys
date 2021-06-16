@@ -1,11 +1,12 @@
 require("dotenv/config")
 import cors from "cors"
 import express from "express"
+import { mkdir } from "fs"
 import http from "http"
 import path from "path"
 import routes from "./routes"
 
-const dir = path.join(__dirname, "..", "public")
+export const dir = path.join(__dirname, "..", "public")
 let server: http.Server
 
 export const initialize = () => {
@@ -15,6 +16,8 @@ export const initialize = () => {
         app.use(express.json({ limit: "5mb" }))
         app.use(express.static(dir))
         app.use(routes)
+
+        mkdir(dir, () => {})
 
         server = http.createServer(app)
 
